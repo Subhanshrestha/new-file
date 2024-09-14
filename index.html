@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Spot Availability</title>
+  <!-- Link to CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Check Parking Spot Availability</h1>
+      <p>Know how many spots are available in each parking lot.</p>
+    </header>
+
+    <div class="form-section">
+      <label for="lot-id">Select Parking Lot:</label>
+      <select id="lot-id">
+        <option value="1">Squires Parking Lot</option>
+      <option value="2">Colliseum Parking Lot</option>
+      </select>
+
+      <button onclick="checkAvailability()">Check Availability</button>
+    </div>
+
+    <div id="parking-info" class="info-box">Available spots will be shown here.</div>
+  </div>
+
+  <!-- Link to JavaScript file -->
+  <script src="main.js"></script>
+</body>
+</html>
+
+
