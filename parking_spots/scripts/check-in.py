@@ -10,7 +10,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row  # So we can access rows as dictionaries
     return conn
 
-# Route to initialize the database with 3 parking spots
+# Route to initialize the database with multiple parking spots
 def initialize_db():
     conn = sqlite3.connect('database/squires.db')
     cursor = conn.cursor()
@@ -33,7 +33,7 @@ def initialize_db():
 # Initialize the database when the script runs
 initialize_db()
 
-# Route to update the parking spot (check in/out)
+# Route to update the parking spot (check in/out) dynamically based on the spot ID
 @app.route('/spot/<int:spot_id>', methods=['GET', 'POST'])
 def update_spot(spot_id):
     conn = get_db_connection()
@@ -59,7 +59,7 @@ def update_spot(spot_id):
         return redirect(url_for('spot_status', spot_id=spot_id))
 
     conn.close()
-    return render_template('spot_1.html', spot=spot)
+    return render_template('spot.html', spot=spot)
 
 # Route to display the current status of the parking spot
 @app.route('/spot/<int:spot_id>/status')
