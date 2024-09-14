@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 # Function to get database connection
 def get_db_connection():
-    conn = sqlite3.connect('database/squires.db')
+    conn = sqlite3.connect('database/colliseum.db')
     conn.row_factory = sqlite3.Row  # So we can access rows as dictionaries
     return conn
 
 # Route to initialize the database with multiple parking spots
 def initialize_db():
-    conn = sqlite3.connect('database/squires.db')
+    conn = sqlite3.connect('database/colliseum.db')
     cursor = conn.cursor()
 
     # Create table for parking spots if it doesn't exist
@@ -34,7 +34,7 @@ def initialize_db():
 initialize_db()
 
 # Route to update the parking spot (check in/out) dynamically based on the spot ID
-@app.route('/spot/<int:spot_id>', methods=['GET', 'POST'])
+@app.route('/colliseum/spot/<int:spot_id>', methods=['GET', 'POST'])
 def update_spot(spot_id):
     conn = get_db_connection()
 
@@ -59,10 +59,10 @@ def update_spot(spot_id):
         return redirect(url_for('spot_status', spot_id=spot_id))
 
     conn.close()
-    return render_template('spot.html', spot=spot)
+    return render_template('colliseum/spot.html', spot=spot)
 
 # Route to display the current status of the parking spot
-@app.route('/spot/<int:spot_id>/status')
+@app.route('/colliseum/spot/<int:spot_id>/status')
 def spot_status(spot_id):
     conn = get_db_connection()
     spot = conn.execute('SELECT * FROM parking_spots WHERE id = ?', (spot_id,)).fetchone()
