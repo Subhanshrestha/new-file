@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Spot {{ spot.id }}</title>
+  </head>
+  <body>
+    <h1>Parking Spot {{ spot.id }}</h1>
+    <p>Status: {{ 'Occupied' if spot['status'] == 1 else 'Available' }}</p>
+    
+    <form method="POST">
+      <button type="submit" name="action" value="checkin">Check In</button>
+      <button type="submit" name="action" value="checkout">Check Out</button>
+    </form>
+  </body>
+</html>
